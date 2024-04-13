@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SFU Hikers Hub -  Add Post</title>
+    <link rel="stylesheet" type="text/css" href="../styles/global.css">
+    <link rel="stylesheet" type="text/css" href="../styles/navbar.css">
+    <link rel="stylesheet" type="text/css" href="../styles/footer.css">
+    <link rel="stylesheet" type="text/css" href="../styles/addPost.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .character-count {
+    display: block; /* Make the span element display as a block */
+    text-align: right; /* Align the text to the right */
+    margin-top: -20px; /* Adjust the margin to position it right under the input/textarea */
+    margin-right: 5px; /* Adjust the margin to not stick to the edge */
+    color: #777; /* Light grey color for the text */
+     }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="container-left">
+                <a class="navbar-brand" href="/">
+                    <img src="../images/logo.png" alt="Logo" width="64" height="64">
+                </a>
+                <a href="/dashboard" class="nav-link">Dashboard</a>
+                <a href="/posts/view" class="nav-link">Forum</a>
+                <a href="/events/view" class="nav-link">Events</a>
+                <a href="/gallery/view" class="nav-link">Gallery</a>
+            </div>
+            <div class="container-right">
+                <a href="/adminPanel" class="nav-link" th:if="${us.isAdmin() == true}">Admin</a>
+                <a href="/account" class="nav-link">Account</a>
+                <a href="/logout" class="nav-link">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="custom-inner-container">
+            <div class="custom-row-center">
+                <div class="custom-col-md-4">
+                    <h1 class="custom-heading">New Post</h1>
+                    <form action="/posts/add" method="post" class="custom-form">
+                        
+                        <div class="custom-input-group">
+                            <input type="text" id="title" name="title" class="custom-input-large" placeholder="title" maxlength="100" oninput="updateTitleCount()" required>
+                            <span id="title-count" class="character-count">100 characters left</span>
+                        </div>
+                        <div class="custom-input-group">
+                            <textarea id="body" name="body" class="custom-input-large" placeholder="text" maxlength="500" oninput="updateBodyCount()" required></textarea> <!--<input type="text" id="body" name="body" class="custom-input-large" placeholder="text" maxlength="500">-->
+                            <span id="body-count" class="character-count">500 characters left</span>
+                        </div>
+                    
+                        <div class="custom-submit-container">
+                            <input class="custom-submit-btn" type="submit" value="Post"></input>
+                        </div>
+    
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-copyright-text">SFU Hiking Club 2024 ©</p>
+            <div class="footer-links">
+                <a href="hikers@sfu.ca" class="footer-link"><i class="bi bi-envelope-fill"></i></a>
+                <a href="https://go.sfss.ca/clubs/622/info" target="_blank" rel="noreferrer" class="footer-link"><i class="bi bi-globe"></i></a>
+                <a href="https://www.instagram.com/sfuhikers/" target="_blank" rel="noreferrer" class="footer-link"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.facebook.com/sfuhikers/" target="_blank" rel="noreferrer" class="footer-link"><i class="bi bi-facebook"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function updateTitleCount() {
+        const titleInput = document.getElementById('title');
+        const titleCount = document.getElementById('title-count');
+        var remainingTitle = 100 - titleInput.value.length;
+        titleCount.textContent = remainingTitle + '/100';
+        // const bodyInput = document.getElementById('body');
+        // const bodyCount = document.getElementById('body-count');
+        }
+
+        function updateBodyCount() {
+        var bodyInput = document.getElementById('body');
+        var bodyCount = document.getElementById('body-count');
+        var remainingBody = 500 - bodyInput.value.length;
+        bodyCount.textContent = remainingBody + '/500';
+    }
+
+    // Call these functions on page load to initialize the counters
+    updateTitleCount();
+    updateBodyCount();
+    
+        // function updateCharacterCount(input, countElement, maxLength) {
+        //     const remaining = maxLength - input.value.length;
+        //     countElement.textContent = `${remaining} characters left`;
+        // }
+    
+        // titleInput.addEventListener('input', () => {
+        //     updateCharacterCount(titleInput, titleCount, 100);
+        // });
+    
+        // bodyInput.addEventListener('input', () => {
+        //     updateCharacterCount(bodyInput, bodyCount, 500);
+        // });
+    </script>
+</body>
+</html>

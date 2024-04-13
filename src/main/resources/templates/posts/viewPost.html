@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SFU Hikers Hub - Forum</title>
+    <link rel="stylesheet" type="text/css" href="/styles/global.css">
+    <link rel="stylesheet" type="text/css" href="/styles/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/styles/footer.css">
+    <link rel="stylesheet" type="text/css" href="/styles/viewPost.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="container-left">
+                <a class="navbar-brand" href="/">
+                    <img src="/images/logo.png" alt="Logo" width="64" height="64">
+                </a>
+                <a th:if="${user != null}" href="/dashboard" class="nav-link">Dashboard</a>
+                <a href="/posts/view" class="nav-link">Forum</a>
+                <a href="/events/view" class="nav-link">Events</a>
+                <a href="/gallery/view" class="nav-link">Gallery</a>
+            </div>
+            <div class="container-right">
+                <a href="/adminPanel" class="nav-link" th:if="${user != null and user.isAdmin() == true}">Admin Panel</a>
+                <a href="/account" class="nav-link" th:if="${user != null}">Account</a>
+                <a href="/login" class="nav-link" th:if="${user == null}">Login</a>
+                <a href="/register" class="nav-link" th:if="${user == null}">Register</a>
+                <a href="/logout" class="nav-link" th:if="${user != null}">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div>
+            <h1 th:text="${post.title}"></h1>
+            <p>Posted by</p>
+            <a th:text="${post.op}" th:href="@{/userProfile/{username}(username=${post.op})}"></a>
+            <br>
+            <p th:text="${post.body}"></p>
+        </div>
+
+        <h class="comments-header"> Comments Section</h>
+
+        <div class="comments">
+            <div id="cusdis_thread" th:if="${user != null}"
+            data-host="https://cusdis.com"
+            data-app-id="a4002586-2b13-49ab-901c-9cfb9e6bff42"
+            th:data-page-id= "'f' + ${post.pid}"
+            data-page-url="{{ PAGE_URL }}"
+            data-page-title="{{ PAGE_TITLE }}"
+            ></div>
+            <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-copyright-text">SFU Hiking Club 2024 ©</p>
+            <div class="footer-links">
+                <a href="hikers@sfu.ca" class="footer-link"><i class="bi bi-envelope-fill"></i></a>
+                <a href="https://go.sfss.ca/clubs/622/info" target="_blank" rel="noreferrer" class="footer-link"><i class="bi bi-globe"></i></a>
+                <a href="https://www.instagram.com/sfuhikers/" target="_blank" rel="noreferrer" class="footer-link"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.facebook.com/sfuhikers/" target="_blank" rel="noreferrer" class="footer-link"><i class="bi bi-facebook"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

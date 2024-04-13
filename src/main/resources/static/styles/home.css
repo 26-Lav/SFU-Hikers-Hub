@@ -1,0 +1,187 @@
+.hero-container {
+    width: 100%;
+    height: 100vh;
+    background-image: url('../images/hero.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    gap: 20px;
+}
+
+.hero-title {
+    color: white;
+    font-size: 5rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.hero-description {
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+    max-width: 600px;
+    line-height: 1.5;
+    margin: 0 20px;
+}
+
+.hero-button {
+    background: white;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.hero-image {
+    width: 30%;
+}
+
+@media screen and (max-width: 600px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+}
+
+.mission-container {
+    width: 100%;
+    background: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mission {
+    max-width: var(--max-width);
+    width: calc(100% - 50px);
+    margin: 50px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mission-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.mission-text {
+    line-height: 1.5;
+}
+
+.achievements-container {
+    max-width: var(--max-width);
+    width: calc(100% - 50px);
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.achievements-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.achievements {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
+.achievement {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.achievement:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.achievement-image {
+    width: 50%;
+    border-radius: 4px;
+}
+
+.achievement-text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.achievement-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.achievement-text {
+    line-height: 1.5;
+}
+
+@media screen and (max-width: 600px) {
+    .achievement {
+        flex-direction: column;
+    }
+
+    .achievement:nth-child(even) {
+        flex-direction: column;
+    }
+
+    .achievement-image {
+        width: 100%;
+    }
+}
+
+.places-container {
+    background: #ddd;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.places-sub-container {
+    max-width: var(--max-width);
+    width: calc(100% - 50px);
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.places-title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.places {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.place {
+    background: #f4f4f4;
+    padding: 10px;
+    border-radius: 4px;
+}
